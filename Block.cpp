@@ -1,4 +1,5 @@
 #include "Block.h"
+#include <iostream>
 
 Block::Block()
 {
@@ -39,7 +40,7 @@ std::vector<Position> Block::GetCellPosition()
 void Block::Rotate()
 {
     rotationState++;
-    if (rotationState == (int)cells.size())
+    if (rotationState == 4)
     {
         rotationState = 0;
     }
@@ -50,6 +51,7 @@ void Block::UndoRotation()
     rotationState--;
     if(rotationState == -1)
     {
-        rotationState = cells.size();
+        rotationState = (int)cells.size()-1;
+        std::cout<<rotationState;
     }
 }
